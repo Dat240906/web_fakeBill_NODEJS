@@ -1,0 +1,6 @@
+.env
+node_modules
+appbill
+appbill_drive
+init_templates
+.vscode

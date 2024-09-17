@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FAKEBILL - Trang Chủ</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../resources/css/home.css">
+    <link rel="stylesheet" href="../resources/css/base.css">
+    <link rel="stylesheet" href="../resources/css/fake-bill-ck.css">
+    <link rel="stylesheet" href="../resources/css/reponsive.css">
+    <style>
+
+        @font-face {
+            font-family: 'mb'; /* Đảm bảo tên font-family khớp với tên bạn sử dụng trong các thuộc tính CSS khác */
+            src: url('../resources/fonts/mb.otf') format('truetype'); /* Cung cấp định dạng của font */
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+
+        .content .container .data-input label {
+            font-size: var(--px-16);
+            padding-bottom: var(--px-10);
+            
+        }
+        .content .container .data-input {
+            flex: 3 1 200px;
+            padding: var(--px-20);
+            background-color: #222;
+            border-radius: 5px;
+            margin: var(--px-20);
+            margin-left: 0;
+            
+        }
+        .content .container .data-input p {
+            font-size: var(--px-14);
+            color: darkgray;
+        }
+        .content .container .data-input select,
+        .content .container .data-input textarea,
+        .content .container .data-input input {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            background-color: #3d3d3d;
+            color: sandybrown;
+            margin-bottom: var(--px-18);
+        }
+        .content .container .data-input select > option {
+            background-color: #222;
+            padding: var(--px-20);
+        }
+        .content .container .data-input select option::before {
+            content:'';
+            background: url(data-icon);
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-size: cover;
+            vertical-align: middle;
+        }
+        .content .container .data-input textarea::placeholder
+        .content .container .data-input input::placeholder {
+            color: rgb(148, 148, 148);
+        }
+
+        .content .container .data-input select:focus-visible,
+        .content .container .data-input textarea:focus-visible ,
+        .content .container .data-input input:focus-visible {
+            outline: none;
+        }
+        .content .container .container-canvas {
+            flex: 1 1 200px;
+            padding: 20px;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+            height: max-content;
+            align-items: center;
+        }
+        .content .container .label-input {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        #container-canvas {
+            width: 300px;
+            height: 555px;
+            position: relative;
+            border-radius: 15px;
+        }
+        .container-canvas .line {
+            position: relative;
+            width: max-content;
+            height: max-content;
+        }
+
+        @property --angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+        .container-canvas .line::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-conic-gradient(
+                from var(--angle),
+                red 0%,
+                yellow 25%,
+                transparent,
+                green 50%,
+                cyan 75%,
+                transparent,
+                red 100%
+            );
+            padding: 5px;
+            inset: -5px;
+            animation: spin 3s infinite linear;
+            border-radius: 15px;
+
+        }
+       
+        @keyframes spin {   
+            0% { --angle: 0deg;}
+            100% { --angle: 360deg;}
+        }
+
+        .container-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .container-button .reset-bill,
+        .container-button .download-bill {
+            padding: 8px 16px;
+            margin: var(--px-20);
+            margin-right: 0;
+            width: 100%;
+            background-color: #4CAF50; /* Màu nền */
+            color: white; /* Màu chữ */
+            border-radius: 5px;
+            font-size: var(--px-18);
+            
+        } 
+        .container-button .reset-bill {
+            background-color: rgb(158, 0, 0);
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+
+        <section id="navbars">
+
+            <div class="container-logo">
+                <h1 class="">FAKEBILL</h1>
+            </div>
+            <div class="nav col style-scroll">
+                <a class="center-y" href="home.html"><span class="material-symbols-outlined">home</span>Trang Chủ</a>
+                <p>- DỊCH VỤ - </p>
+                <a href="fake-bill-chuyen-khoan.html" class="active center-y"><span class="material-symbols-outlined">account_balance</span>Fake Bill Chuyển Khoản</a>
+                <a href="fake-so-du.html" class=" center-y" ><span class= "material-symbols-outlined">currency_exchange</span>Fake Số dư Ngân Hàng</a>
+                <a href="fake-bien-dong.html" class="center-y"><span class="material-symbols-outlined">trending_up</span>Fake Biến Động Số Dư</a>
+                <a href="fake-cccd.html" class="center-y"><span class="material-symbols-outlined">id_card</span>Fake CCCD</a>
+                <p>- NGƯỜI DÙNG -</p>
+                <a href="nap-tien.html" class="center-y"><span class="material-symbols-outlined">payments</span>Nạp Tiền</a>
+                <a href="mua-goi.html" class="center-y"><span class="material-symbols-outlined">inventory_2</span>Gói Đăng Ký</a>
+                <p>- KHÁC - </p>
+                <a  target="_blank" href="https://t.me/thanhdat06" class="center-y"><span class="material-symbols-outlined">sensor_occupied</span>Hỗ Trợ</a>
+                <a href="gop-y-va-bao-loi.html" class="center-y"><span class="material-symbols-outlined">chat</span>Góp Ý & Báo Lỗi</a>
+                <i>codeVersion: 1.0.0</i>
+            </div>
+        </section>
+
+        <section id="content">
+            <div class="header relative center-y">
+                <div class="container absolute row center-y">
+                    <p class="center-y"><span class="material-symbols-outlined">wallet</span>Số dư: 10,000 đ</p>
+                    <button class="login  br-5 center-y none"> 
+                        <span class="material-symbols-outlined">login</span>
+                        Đăng Nhập
+                    </button>
+                    <div class="user relative">
+                        <span class="material-symbols-outlined pd-10px">account_circle</span>
+                        <ul class="absolute left--100pc br-5 none">
+                            <li  class="user-js center-y "><span class="material-symbols-outlined">account_circle</span>Tài Khoản</li>
+                            <li class="logout-js center-y"><span class="material-symbols-outlined">logout</span>Đăng Xuất</li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="banron center-y relative" >
+                    <h1 class="absolute" data-text="WEBSITE FAKEBILL SỐ 1" >WEBSITE FAKEBILL SỐ 1</h1>
+                    <h1 class="absolute" data-text="TỪ CHỐI MỌI TRÁCH NHIỆM">TỪ CHỐI MỌI TRÁCH NHIỆM</h1>
+                    <h1 class="absolute" data-text="TỪ CHỐI MỌI TRÁCH NHIỆM">TỪ CHỐI MỌI TRÁCH NHIỆM</h1>
+                </div>
+            </div>
+            <div class="content style-scroll">
+                <div class="direct pd-10px">
+                    <h1 class="cl-aqua"><span class="cl-red">Dịch Vụ</span>/ <a class="fix-a cl-aqua" href="">Fake Bill Chuyển Khoản</a> <span class="cl-green">/ MBBank</span></h1>
+                </div>
+                <div class="container row">
+                    <div class="data-input">
+                        <div class="label-input">
+                            <label for="data-input-amount">Số tiền</label>
+                            <input id="data-input-amount" type="text" placeholder="999,999,999">
+                        </div>
+                        <div class="label-input">
+                            <label for="data-input-time">Thời gian</label>
+                            <input id="data-input-time" type="datetime-local" >
+                        </div>
+                    
+                        <div class="row w-100pc gap-10px">
+                            <div class="label-input flex-1">
+                                <label for="data-input-name-reciever">Tên người nhận</label>
+                                <input id="data-input-name-reciever" type="text" placeholder="Nguyen Van A">
+                            </div>
+                            <div class="label-input flex-1">
+                                <label for="data-input-stk-reciever">STK người nhận</label>
+                                <input id="data-input-stk-reciever" type="text" placeholder="123456789">
+                            </div>
+                        </div>
+                        <div class="label-input flex-1">
+                            <label for="data-input-bank-reciever">Ngân hàng người nhận</label>
+                            <input type="text" id="data-input-bank-reciever" list="nameBanks" placeholder="Chọn ngân hàng" dataText="none">
+                            <datalist name="" id="nameBanks">
+                                <option value="MBBank" dataText="MBBank (MB)"></option>
+                                <option value="Vietcombank" dataText="Vietcombank (VCB)"></option>
+                                <option value="Agribank" dataText="Agribank (VBA)"></option>
+                                <option value="BIDV" dataText="BIDV"></option>
+                                <option value="Vietinbank" dataText="Vietinbank (CTG)"></option>
+                                <option value="VIB" dataText="VIB"></option>
+                                <option value="Techcombank" dataText="Techcombank (TCB)"></option>
+                                <option value="LPBank" dataText="LPBank (LPB)"></option>
+                                <option value="VPBank" dataText="VPBank (VPB)"></option>
+                                <option value="Eximbank" dataText="Eximbank (EIB)"></option>
+                                <option value="TPBank" dataText="TPBank (TPB)"></option>
+                                <option value="MSB" dataText="Maritime (MSB)"></option>
+                                <option value="Đông Á" dataText="DongA (DAB)"></option>
+                                <option value="Bắc Á" dataText="Bac A (NASB)"></option>
+                                <option value="ACB" dataText="ACB"></option>
+                                <option value="HDBank" dataText="HDBank (HDB)"></option>
+                            </datalist>
+                        </div>
+                        <div class="label-input flex-1">
+                            <label for="data-input-message">Nội dung</label>
+                            <textarea id="data-input-message"  placeholder="NGUYEN VAN A chuyen tien"></textarea>
+                        </div>
+                        <p style="margin-bottom: var(--px-20);" class="center-x fs-10">- Chi tiết phụ -</p>
+                        <div class="row w-100pc gap-10px">
+                            <div class="label-input flex-1">
+                                <label for="data-input-battery">Dung lượng PIN</label>
+                                <input id="data-input-battery" type="text" placeholder="100">
+                            </div>
+                            <div class="label-input flex-1">
+                                <label for="data-input-hour">Giờ - phút</label>
+                                <input id="data-input-hour" type="text" placeholder="9 20">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-canvas col">
+                        <div class="line">
+                            <canvas id="container-canvas" width="500" height="300"></canvas>
+                        </div>
+                        <div class="container-button ">
+                            <a onclick="resetBill()" class="flex-1 reset-bill center-y center-x fix-a" download ><span class="material-symbols-outlined">restart_alt</span>Đặt lại</a>
+                            <a class="flex-1 download-bill center-y center-x fix-a" download ><span class="material-symbols-outlined">download</span>Tạo ngay</a>
+                        </div>
+                    </div>
+                </div>
+                <a id="download-link" download="image.jpg" style="display:none;">Download Image</a>
+                <div class="footer">
+                    <h4>&copy; 2024 FakeBill. All rights reserved.</h4>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <script>
+        function printImage(ctx, src, x, y, width, height, borderRadii = [0, 0, 0, 0]) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.save();
+                    // Vẽ đường path với border-radius
+                    const [topLeft, topRight, bottomRight, bottomLeft] = borderRadii;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(x + topLeft, y);
+                    ctx.lineTo(x + width - topRight, y);
+                    ctx.quadraticCurveTo(x + width, y, x + width, y + topRight);
+                    ctx.lineTo(x + width, y + height - bottomRight);
+                    ctx.quadraticCurveTo(x + width, y + height, x + width - bottomRight, y + height);
+                    ctx.lineTo(x + bottomLeft, y + height);
+                    ctx.quadraticCurveTo(x, y + height, x, y + height - bottomLeft);
+                    ctx.lineTo(x, y + topLeft);
+                    ctx.quadraticCurveTo(x, y, x + topLeft, y);
+                    ctx.closePath();
+                    ctx.clip();
+
+                    ctx.drawImage(img, x, y, width, height);
+                    ctx.restore();
+                    resolve();
+                };
+                img.onerror = reject;
+                img.src = src;
+            });
+        }
+        function printText(ctx, { x, maxX, y, fontFamily, fontSize, fontWeight, color, fontOpacity, textAlign, text }) {
+            // Set the font style
+            ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+            
+            // Set the color and opacity
+            const [r, g, b] = color;
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${fontOpacity})`;
+
+            // Helper function to draw text with alignment and return line width
+            function drawTextLine(line, x, y) {
+                const lineWidth = ctx.measureText(line).width;
+                if (textAlign === 'left') {
+                    ctx.fillText(line.trim(), x, y);
+                } else if (textAlign === 'right') {
+                    ctx.fillText(line.trim(), x + maxX - lineWidth, y);
+                } else if (textAlign === 'center') {
+                    ctx.fillText(line.trim(), x - (lineWidth / 2), y);
+                }
+                return lineWidth;
+            }
+
+            // Wrap the text
+            const words = text.split(' ');
+            let line = '';
+            let lineHeightOffset = 0;
+            let maxLineWidth = 0;  // Variable to track the maximum width of any line
+            let widthText = x;     // Variable to track the leftmost x position
+            let bottomY = y;       // Variable to track the bottom Y coordinate
+
+            for (let i = 0; i < words.length; i++) {
+                const testLine = line + words[i] + ' ';
+                const testWidth = ctx.measureText(testLine).width;
+
+                if (testWidth > maxX && i > 0) {
+                    const lineWidth = drawTextLine(line, x, y + lineHeightOffset);
+                    maxLineWidth = Math.max(maxLineWidth, lineWidth);
+
+                    // Update leftmost x position based on alignment
+                    if (textAlign === 'left') {
+                        widthText = Math.min(widthText, x);
+                    } else if (textAlign === 'right') {
+                        widthText = Math.min(widthText, x + maxX - lineWidth);
+                    } else if (textAlign === 'center') {
+                        widthText = Math.min(widthText, x - (lineWidth / 2));
+                    }
+
+                    line = words[i] + ' ';
+                    lineHeightOffset += fontSize;  // Assuming lineHeight equals fontSize
+                } else {
+                    line = testLine;
+                }
+            }
+
+            // Draw the last line and update maxLineWidth and widthText
+            const lastLineWidth = drawTextLine(line, x, y + lineHeightOffset);
+            maxLineWidth = Math.max(maxLineWidth, lastLineWidth);
+
+            if (textAlign === 'left') {
+                widthText = Math.min(widthText, x);
+            } else if (textAlign === 'right') {
+                widthText = Math.min(widthText, x + maxX - lastLineWidth);
+            } else if (textAlign === 'center') {
+                widthText = Math.min(widthText, x - (lastLineWidth / 2));
+            }
+
+            // Calculate the bottom Y coordinate
+            bottomY = y + lineHeightOffset + fontSize; // Include additional height for the final line
+
+            // Return both the leftmost x position and the bottom Y coordinate
+            return { widthText, bottomY };
+        }
+
+        async function printSubDetails(ctx, percent, timeDevide) {
+            // pin, sóng, wifi, giờ
+            let widthBattery = 45;
+            let heightBattery = 22;
+            let posXBattery = 495;
+            let posYBattery = 47;
+/* 
+            await printImage(ctx, 
+                '../resources\phoi\pin/main.png',
+                posXBattery,
+                posYBattery,
+                widthBattery, 
+                heightBattery
+            ); */
+            await drawColoredRect(ctx, 
+                posXBattery,
+                posYBattery,
+                widthBattery-4, 
+                heightBattery, 
+                "gray", 
+                [7,7,7,7]
+                )
+            await drawColoredRect(ctx, 
+                posXBattery+42.5,
+                posYBattery+8,
+                2.5, 
+                7, 
+                "gray", 
+                [0,3.5,3.5,0]
+                )
+
+            let maxWidthBattery = widthBattery * 0.875;
+            let percentBattery = percent * maxWidthBattery / 100;
+            
+
+            let brRightSide = [0,0]
+            if (percent >= 90 && percent <= 97) {
+                brRightSide = [4, 4]
+            }else if (percent >= 98) {
+                brRightSide = [7, 7]
+            }
+            await drawColoredImage(ctx, 
+                '../resources/phoi/pin/than-den.png',
+                x=posXBattery,
+                y=posYBattery+1,
+                width=percentBattery+1,
+                height=heightBattery-2,
+                color=percent < 15 ? '#E03C39' : 'black',
+                border_radius=[7, brRightSide[0], brRightSide[1], 7]
+            );
+            printText(ctx, {
+                x: posXBattery + maxWidthBattery / 1.78,
+                maxX: 500,
+                y: posYBattery+posYBattery/2-7,
+                fontFamily: 'arial',
+                fontSize: maxWidthBattery*0.45,
+                fontWeight: '600',
+                color: [255, 255, 255],
+                fontOpacity: 1,
+                textAlign: 'center',
+                text: `${percent}`
+            });
+
+            let widthWifi = 60
+            let heightWifi = 60
+            await printImage(ctx, 
+                '../resources/phoi/wifi/black/full.png',
+                posXBattery-50,
+                posYBattery-20,
+                widthWifi, 
+                heightWifi
+            )
+
+            let widthSong =43
+            let heightSong = 44
+            await printImage(ctx, 
+                '../resources/phoi/song/3-vjach-đen.png',
+                posXBattery-78,
+                posYBattery-10,
+                widthSong, 
+                heightSong
+            )
+
+            printText(ctx, {
+                x: 100,
+                maxX: 500,
+                y: 69,
+                fontFamily: 'arial',
+                fontSize: 30,
+                fontWeight: '600',
+                color: [0, 0, 0],
+                fontOpacity: 1,
+                textAlign: 'center',
+                text: timeDevide
+            })
+        }
+        
+        const printMainContent = async (ctx,dataInput= [money, time, name, bank, nameBank, message]) => {
+            const basePathSmaillBank = '../resources/phoi/icon_bank/removeBG'
+            let pathIconSmallBank = `${basePathSmaillBank}/`
+            switch (dataInput[4]) {
+                case 'MBBank (MB)':
+                    pathIconSmallBank += '19.png';
+                    break;
+                case 'Vietcombank (VCB)':
+                    pathIconSmallBank += '2.png';
+                    break;
+                case 'Agribank (VBA)':
+                    pathIconSmallBank += '16.png';
+                    break;
+                case 'BIDV':
+                    pathIconSmallBank += '13.png';
+                    break;
+                case 'Vietinbank (CTG)':
+                    pathIconSmallBank += '6.png';
+                    break;
+                case 'VIB':
+                    pathIconSmallBank += '17.png';
+                    break;
+                case 'Techcombank (TCB)':
+                    pathIconSmallBank += '20.png';
+                    break;
+                case 'LPBank (LPB)':
+                    pathIconSmallBank += '23.png';
+                    break;
+                case 'VPBank (VPB)':
+                    pathIconSmallBank += '18.png';
+                    break;
+                case 'Eximbank (EIB)':
+                    pathIconSmallBank += '99.png';
+                    break;
+                case 'TPBank (TPB)':
+                    pathIconSmallBank += '15.png';
+                    break;
+                case 'Maritime (MSB)':
+                    pathIconSmallBank += '7.png';
+                    break;
+                case 'DongA (DAB)':
+                    pathIconSmallBank += '4.png';
+                    break;
+                case 'Bac A (NASB)':
+                    pathIconSmallBank += '12.png';
+                    break;
+                case 'ACB':
+                    pathIconSmallBank += '21.png';
+                    break;
+                case 'HDBank (HDB)':
+                    pathIconSmallBank += '24.png';
+                    break;
+                default:
+            }
+            const DATA = {
+                "money": {
+                    "x": 300,
+                    "max_x": 500,
+                    "y": 377,
+                    "font_family": "mb",
+                    "font_size": 43,
+                    "font_weight": 700,
+                    "color": [19, 25, 185],
+                    "font_opacity": 1,
+                    "text_align": "center"
+                },
+                "time": {
+                    "x": 300,
+                    "max_x": 500,
+                    "y": 419,
+                    "font_family": "mb",
+                    "font_size": 19,
+                    "font_weight": 300,
+                    "color": [0, 0, 0],
+                    "font_opacity": 1,
+                    "text_align": "center"
+                },
+                "name": {
+                    "x": 300,
+                    "max_x": 450,
+                    "y": 546,
+                    "font_family": "mb",
+                    "font_size": 25,
+                    "font_weight": 600,
+                    "color": [0, 0, 0],
+                    "font_opacity": 1,
+                    "text_align": "center"
+                },
+                "bank": {
+                    "x": 323,
+                    "max_x": 500,
+                    "y": 592,
+                    "font_family": "mb",
+                    "font_size": 21,
+                    "font_weight": 400,
+                    "color": [0, 0, 0],
+                    "font_opacity": 0.8,
+                    "text_align": "center"
+                },
+                /* "x": "left of text - 54 (PosX_text - int(width_Text/2) -54)", */
+
+                "icon_bank": {
+                    "x": 0,
+                    "y": 554,
+                    "w": 60,
+                    "h": 60
+                },
+                "message": {
+                    "x": 300,
+                    "max_x": 400,
+                    "y": 636,
+                    "font_family": "arial",
+                    "font_size": 21,
+                    "font_weight": 400,
+                    "color": [0, 0, 0],
+                    "font_opacity": 0.8,
+                    "text_align": "center"
+                }
+            }
+            let i = 0
+            let widthNameBank = 0
+            let posYMessage = 0
+            let posYName = 0
+            let posYNameBank = 0
+            for (let dataDetail in DATA) {
+                let dataObject = DATA[dataDetail]
+                let text = dataInput[i]
+                if (!text) {
+                    i++
+                    continue
+                }
+                if (dataDetail == 'icon_bank') {
+                    await printImage(ctx, 
+                        pathIconSmallBank,
+                        dataObject.x+widthNameBank-58,
+                        posYName-21,
+                        dataObject.w,
+                        dataObject.h
+                        )
+                    i++
+                   
+                    continue
+                }
+                if (dataDetail == 'bank') {
+                    const {widthText, bottomY} = printText(ctx, {
+                    x: dataObject.x,
+                    maxX: dataObject.max_x,
+                    y: posYName+16,
+                    fontFamily: dataObject.font_family,
+                    fontSize: dataObject.font_size,
+                    fontWeight: dataObject.font_weight,
+                    color: dataObject.color,
+                    fontOpacity: dataObject.font_opacity,
+                    textAlign: dataObject.text_align,
+                    text: dataInput[i]
+                })
+                widthNameBank = widthText
+                posYNameBank = bottomY
+                i++
+                continue
+                }
+                if (dataDetail == 'message') {
+                    const {widthText, bottomY} = printText(ctx, {
+                    x: dataObject.x,
+                    maxX: dataObject.max_x,
+                    y: posYNameBank+22,
+                    fontFamily: dataObject.font_family,
+                    fontSize: dataObject.font_size,
+                    fontWeight: dataObject.font_weight,
+                    color: dataObject.color,
+                    fontOpacity: dataObject.font_opacity,
+                    textAlign: dataObject.text_align,
+                    text: dataInput[i]
+                })
+                posYMessage = bottomY
+                i++
+                continue
+                }
+                const {widthText, bottomY} = printText(ctx, {
+                    x: dataObject.x,
+                    maxX: dataObject.max_x,
+                    y: dataObject.y,
+                    fontFamily: dataObject.font_family,
+                    fontSize: dataObject.font_size,
+                    fontWeight: dataObject.font_weight,
+                    color: dataObject.color,
+                    fontOpacity: dataObject.font_opacity,
+                    textAlign: dataObject.text_align,
+                    text: dataInput[i]
+                })
+                if (dataDetail == 'bank') {
+                    
+                }
+                if (dataDetail == 'message') {
+                }
+                if (dataDetail == 'name') {
+                    posYName = bottomY
+                }
+                i++
+            }
+            await printImage(ctx, 
+                '../resources/phoi/chuyen_khoan/mb/duoi.png',
+                0,
+                posYMessage-10,
+                591,
+                445
+            )
+            /* printText(ctx, {
+                    x: 300,
+                    maxX: 500,
+                    y: 377,
+                    fontFamily: 'Mooli',
+                    fontSize: 41,
+                    fontWeight: '700',
+                    color: [0, 0, 0],
+                    fontOpacity: 1,
+                    textAlign: 'center',
+                    text: parseInt(amount, 10).toLocaleString()
+                }); */
+
+        }
+
+        // Hàm để vẽ hình ảnh với màu sắc thay đổi
+        function drawColoredRect(ctx, x, y, width, height, color, borderRadii = [0, 0, 0, 0]) {
+            const [topLeft, topRight, bottomRight, bottomLeft] = borderRadii;
+
+            ctx.save();
+            ctx.beginPath();
+
+            // Draw rounded rectangle
+            ctx.moveTo(x + topLeft, y);
+            ctx.lineTo(x + width - topRight, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + topRight);
+            ctx.lineTo(x + width, y + height - bottomRight);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - bottomRight, y + height);
+            ctx.lineTo(x + bottomLeft, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - bottomLeft);
+            ctx.lineTo(x, y + topLeft);
+            ctx.quadraticCurveTo(x, y, x + topLeft, y);
+
+            ctx.closePath();
+
+            // Fill the rectangle with color
+            ctx.fillStyle = color;
+            ctx.fill();
+
+            ctx.restore();
+        }
+        function drawColoredImage(ctx, src, x, y, width, height, color, borderRadii = [0, 0, 0, 0]) {
+            return new Promise((resolve, reject) => {
+                let img = new Image();
+                img.onload = () => {
+                    const [topLeft, topRight, bottomRight, bottomLeft] = borderRadii;
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(x + topLeft, y);
+                    ctx.lineTo(x + width - topRight, y);
+                    ctx.quadraticCurveTo(x + width, y, x + width, y + topRight);
+                    ctx.lineTo(x + width, y + height - bottomRight);
+                    ctx.quadraticCurveTo(x + width, y + height, x + width - bottomRight, y + height);
+                    ctx.lineTo(x + bottomLeft, y + height);
+                    ctx.quadraticCurveTo(x, y + height, x, y + height - bottomLeft);
+                    ctx.lineTo(x, y + topLeft);
+                    ctx.quadraticCurveTo(x, y, x + topLeft, y);
+                    ctx.closePath();
+                    ctx.clip();
+
+                    ctx.drawImage(img, x, y, width, height);
+
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x, y, width, height);
+
+                    ctx.restore();
+                    resolve();
+                };
+                img.onerror = reject;
+                img.src = src;
+            });
+        }
+        function formatDateTime(isoString) {
+            // Tạo một đối tượng Date từ chuỗi ISO
+            const date = new Date(isoString);
+
+            // Các tùy chọn định dạng ngày tháng năm và giờ phút
+            const optionsDate = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            const optionsTime = { hour: '2-digit', minute: '2-digit', hour12: false }; // hour12: false để dùng định dạng 24h
+
+            // Định dạng ngày tháng năm
+            const formattedDate = date.toLocaleDateString('en-GB', optionsDate); // 'en-GB' định dạng ngày là dd/mm/yyyy
+            // Định dạng giờ phút
+            const formattedTime = date.toLocaleTimeString('en-GB', optionsTime); // 'en-GB' định dạng giờ là hh:mm
+
+            // Ghép kết quả với định dạng mong muốn
+            return `${formattedTime} - ${formattedDate}`;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('container-canvas');
+            const ctx = canvas.getContext('2d');
+
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = canvas.clientWidth * dpr;
+            canvas.height = canvas.clientHeight * dpr;
+            ctx.scale(dpr, dpr);
+            const downloadLink = document.getElementById('download-link');
+            const img = new Image();
+            let imageLoaded = false;
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                imageLoaded = true;
+                updateCanvas();
+            };
+
+            img.src = '../resources/phoi/chuyen_khoan/mb/23.jpg';
+
+            async function updateCanvas() {
+                if (!imageLoaded) return;
+                const downloadLink = document.querySelector('.download-bill')
+                const amount = document.getElementById('data-input-amount').value;
+                const percentBattery = document.getElementById('data-input-battery').value ? document.getElementById('data-input-battery').value : document.getElementById('data-input-battery').placeholder
+                const timeDevide = document.getElementById('data-input-hour').value ? document.getElementById('data-input-hour').value : document.getElementById('data-input-hour').placeholder
+                const timeBill = document.getElementById('data-input-time').value
+                const nameReciever = document.getElementById('data-input-name-reciever').value ? document.getElementById('data-input-name-reciever').value : document.getElementById('data-input-name-reciever').placeholder
+                const message = document.getElementById('data-input-message').value ? document.getElementById('data-input-message').value : document.getElementById('data-input-message').placeholder 
+                const stkReciever = document.getElementById('data-input-stk-reciever').value ? document.getElementById('data-input-stk-reciever').value : document.getElementById('data-input-stk-reciever').placeholder
+                const nameBankReciever = getNameBankReciever()
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0);
+                
+                await printSubDetails(ctx, percentBattery, `${timeDevide.split(' ')[0]}:${timeDevide.split(' ')[1]}`);
+                await printMainContent(ctx, [`${amount} VND`, formatDateTime(timeBill), nameReciever, `${nameBankReciever} - ${stkReciever}`,`${nameBankReciever}`, message])
+                
+                const dataUrl = canvas.toDataURL('image/jpeg');
+                downloadLink.download = 'billCK.png';
+                downloadLink.href = dataUrl;
+            }
+            
+            updateCanvas();
+
+
+            const getNameBankReciever = () => {
+                const input = document.getElementById('data-input-bank-reciever');
+                const datalist = document.getElementById('nameBanks');
+
+                if (!input || !datalist) {
+                    console.error('Input hoặc datalist không tồn tại.');
+                    return null;
+                }
+
+                const value = input.value;
+                const options = datalist.querySelectorAll('option');
+
+                for (const option of options) {
+                    if (option.value === value) {
+                        return option.getAttribute('dataText'); // Trả về giá trị của thuộc tính data-text
+                    }
+                }
+
+                return null; // Trả về null nếu không tìm thấy giá trị phù hợp
+            }
+            const validateMoney = (item) => {
+                if (item.id === 'data-input-amount') {
+                        let number = item.value.replace(/,/g, ''); // Loại bỏ dấu phân cách hàng nghìn
+                        if (!isNaN(number) && number.trim() !== '') {
+                            item.value = parseInt(number, 10).toLocaleString(); // Định dạng số với dấu phân cách hàng nghìn
+                            
+                        }
+                        if (number.length > 12) {
+                            number = number.slice(0, 12);
+                            item.value = parseInt(number, 10).toLocaleString();
+                        }
+                    }
+            }
+
+            const upperCaseName = (item) => {
+                if (item.id === 'data-input-name-sender' || item.id === 'data-input-name-reciever') {
+                    item.value = item.value.toUpperCase();
+                }
+            }
+
+            function resetBill() {
+                const dataInput = document.querySelectorAll('.container .data-input input')
+                dataInput.forEach((input) => {
+                    input.value = ''
+                });
+            }
+            const inputElements = document.querySelectorAll(
+                '#data-input-amount, #data-input-time, #data-input-name-sender, #data-input-stk-sender, #data-input-name-reciever, #data-input-stk-reciever, #data-input-message, #data-input-battery, #data-input-bank-reciever, #data-input-hour'
+            );
+            inputElements.forEach((item) => {
+                item.addEventListener('input', () => {
+                    validateMoney(item)
+                    upperCaseName(item)
+                    // Gọi updateCanvas và xử lý lỗi nếu có
+                    updateCanvas().catch(console.error);
+                });
+            });
+        });
+
+        </script>
+    
+    
+</body>
+</html>

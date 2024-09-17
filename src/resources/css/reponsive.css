@@ -1,0 +1,138 @@
+    /* Responsive */
+@media (max-width: 767px) {
+    :root {
+        --fs-18: 10.8px;    
+        --fs-30: 18px;    
+        --px-14: 8.4px;
+        --px-10: 6px;
+        --px-16: 14px;
+        --fs-13: 7.8px;
+        --px-20: 12px;
+        --px-18: 14px;
+        --px-70: 42px;
+        --px-68: 40.8px;
+        --px-30: 18px;
+        --px-60: 36px;
+        --px-100: 60px;
+        --px-76: 45.6px;
+        --px-56: 33.6px;
+        --px-28: 16.8px;
+        --px-40: 24px;
+        --px-45: 27px;
+        --px-140: 84px;
+        --header-height: 45.6px;
+    }
+    /* LOGIN_REGISTER */
+    .square {
+        display: none;
+    }
+
+    #banner {
+        margin: 50px 0;
+    }
+    #banner, 
+    #form-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: auto;
+    }
+
+    #form-container {
+        padding: 0px 20px 0;
+    }
+
+    .container-logo {
+        font-size: 42px;
+    }
+
+    .container-logo::after {
+        font-size: 16px;
+        bottom: -23px;
+    }
+
+    h1 {
+        font-size: 15px;
+    }
+
+    .label-input input {
+        padding: 8px 16px;
+        font-size: 15px;
+    }
+
+    .label-input::before {
+        height: 54%;
+    }
+
+    .label-input label {
+        font-size: 13px;
+    }
+
+    #form-container button {
+        padding: 8px 16px;
+    }
+
+    .container-noti a {
+        font-size: 13px;
+    }
+
+    .label-input input:not(:placeholder-shown) + label,
+    .label-input input:focus + label {
+        top: -11px;
+        font-size: 10px;
+    }
+    #navbars {
+        display: none;
+    }
+    #navbars {
+        width: 80%;
+        position: fixed;
+        z-index: 2;
+        animation: right .1s ease-in-out;
+    }
+
+    @keyframes right {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 80%;
+        }
+    }
+    #navbars .close-nav {
+        display: block;
+    }
+    #content {
+        width: 100%
+    }
+    #content .menu {
+        display: block;
+    }
+    #content .content {
+        height: 100%;
+    }
+    #content .header {
+        height: 5%;
+    }
+    #content .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #000000c4;
+        color: sandybrown;
+        padding: 10px 0;
+        text-align: center;
+        transition: transform 0.3s ease;
+        z-index: 1;
+    }
+    .header.hidden {
+        transform: translateY(-100%); /* Di chuyển header ra khỏi khung nhìn */
+    }
+    #content .content .direct{
+        margin-top: 15%;
+    }
+    #navbars {
+        font-size: var(--px-20);
+    }
+}

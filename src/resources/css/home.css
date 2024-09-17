@@ -1,0 +1,335 @@
+span {
+    margin: 0 7px ;
+}
+#navbars {
+    width: 20%;
+    height: 100vh;
+    background: linear-gradient(3deg, #4f0000, #000000);
+    border: 1px solid var(--color-red-border);
+    border-radius: 7px;
+    z-index: 1;
+    
+}
+#navbars .hacker {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+#content {
+    width: 80%;
+    height: 100%;
+}
+.container-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    border-bottom: 1px solid var(--color-red-border);
+    position: relative;
+    overflow: hidden;
+}
+.container-logo h1 {
+    font-size: 25px;
+    letter-spacing: 2px;
+    color: transparent;
+    background: linear-gradient(0deg, red, #222);
+    background-clip: text;
+    z-index: 2;
+}
+#navbars .nav {
+    overflow: auto;
+    height: 90%;
+    
+}
+/* #navbars .nav::-webkit-scrollbar {
+    width: 5px;
+}
+
+#navbars .nav::-webkit-scrollbar-thumb:hover {
+    background-color: #943636;
+} */
+#navbars .nav p, 
+#navbars .nav i {
+    margin: 10px;
+    text-align: center;
+    color: #7b7b7b;
+}
+#navbars .nav a {
+    color: #b0b0b0;
+    text-decoration: none;
+    margin: 10px 15px;
+    padding: 15px 16px;
+    transition: all .2s ease-in-out;
+    border-radius: 7px;
+    border: 1px solid rgb(74, 11, 11);
+}
+.active {
+    color: rgb(255, 255, 255);
+    background-color: #943636;
+}
+#navbars .nav a:hover {
+    color: white;
+    background-color: #943636;
+    padding: 15px 5px 15px 26px;
+}
+/* ??????????????????????????????? */
+#content {
+    background: linear-gradient(3deg, #4f0000, #000000);
+    cursor: url('Pictures/logo.png') auto;
+}
+
+#content .header {
+    height: 83.26px;
+    border-bottom: 1px solid var(--color-red-border);
+}
+    
+#content .header .container {
+    right: 0;
+    z-index: 1;
+    backdrop-filter: blur(20px);
+}
+#content .header {
+    color: sandybrown;
+}
+/* Thiết lập cho container */
+.banner {
+    overflow: hidden; /* Ẩn phần chữ ra ngoài phạm vi */
+    white-space: nowrap; /* Ngăn cách dòng */
+    position: relative; /* Để sử dụng position absolute cho các h1 */
+    background: #f0f0f0; /* Màu nền để dễ nhìn */
+    height: 60px; /* Chiều cao của banner */
+    display: flex; /* Dùng flex để xếp các phần tử h1 */
+    align-items: center; /* Căn giữa dọc các phần tử h1 */
+}
+
+/* Container để chứa các thẻ h1 */
+.text-container {
+    display: flex; /* Xếp các h1 theo hàng ngang */
+    position: absolute; /* Để animation hoạt động chính xác */
+    width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+    overflow: hidden; /* Ẩn phần chữ ra ngoài phạm vi */
+}
+
+/* Nội dung chữ chạy liên tục */
+.text-content {
+    display: flex; /* Xếp các thẻ h1 theo hàng ngang */
+    width: max-content; /* Chiều rộng tự động mở rộng theo nội dung */
+    animation: scroll 15s linear infinite; /* Animation chạy liên tục */
+}
+
+/* Thiết lập cho các thẻ h1 */
+.animated-text {
+    font-size: 24px; /* Kích thước chữ */
+    margin: 0;
+    padding: 0 20px; /* Padding giữa các thẻ h1 để tránh đè lên nhau */
+    white-space: nowrap; /* Ngăn cách dòng trong từng thẻ h1 */
+}
+
+/* Animation chữ chạy từ phải sang trái */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%); /* Bắt đầu từ ngoài bên phải */
+    }
+    100% {
+        transform: translateX(-100%); /* Kết thúc tại ngoài bên trái */
+    }
+}
+#content .header p {
+    padding: 8px 16px ;
+    margin-left: 10px;
+    transition: all .2s ease-in-out;
+}
+#content .header .login {
+    color: sandybrown;
+    background: transparent;
+    border: none;
+    padding: 8px 16px ;
+    margin: 0 var(--px-40) 0 10px;
+    font-size: var(--fs-26);
+    transition: all .2s ease-in-out;
+    display: none;
+}
+#content .header .login:hover {
+    background-color: rgb(255, 126, 13);
+    color: rgb(255, 255, 255);
+}
+#content .content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 90%;
+}
+#content .user > .material-symbols-outlined {
+    font-size: 30px;
+    margin: 0 var(--px-20) 0 10px ;
+}
+#content .user > .material-symbols-outlined:hover + ul,
+#content .user ul:hover {
+    display: block;
+}
+.scroll {
+    overflow: auto;
+    
+}
+#content .user ul {
+    list-style-type: none;
+    padding: 7px;
+    background-color: rgb(255, 126, 13);;
+    color: white;
+}
+#content .user li {
+    padding: 7px 10px ;
+    margin: 5px 0 ;
+    transition: all .2s ease-in-out;
+}
+#content .user li:hover {
+    padding: 7px 5px 7px var(--px-14);
+}
+
+#content .content .notifications {
+    background-color: rgb(118, 61, 35);
+    color: sandybrown;
+    margin: 0 var(--px-20);
+    padding: var(--px-14);
+    font-size: var(--px-18);
+}
+#content .content .main-content  {
+    color: darkgray;
+    margin: var(--px-20);
+    gap: 10px;
+}
+#content .content .main-content .news {
+    flex: 2 1 400px;
+}
+#content li.post {
+    display: inline-flex;
+    flex-direction: row;
+}
+#content li.post a,
+#content li.post p {
+    display: contents;
+}
+#content .content .main-content > div {
+}
+#content .content .main-content .fast-access {
+    flex: 1 1 400px;
+}
+
+#content .content .main-content h2 {
+    padding: var(--px-10) var(--px-20);
+    background-color: darkred;
+    border-radius: 5px 5px 0 0;
+    color: azure;
+}
+#content .content .main-content h2 {
+    font-size: var(--px-20);
+}
+#content .content .main-content .news  ul {
+    height: 400px;
+}
+#content .content .main-content ul {
+    padding: 5px 0 5px;
+    border: 1px solid darkred;
+    list-style-type: none;
+    border-radius: 0 0 5px 5px;
+    overflow: auto;
+}
+#content .content .main-content ul li {
+    margin-bottom: var(--px-20);
+    font-size: var(--px-18);
+    letter-spacing: 1px;
+    padding: 0 var(--px-20);
+    
+}   
+#content .fast-access ul {
+    padding-bottom: 0 !important;
+}
+#content .fast-access ul > a {
+    display: flex;
+    justify-content: center;
+    padding: var(--px-20);
+    border-radius: 0 0 5px 5px ;
+    color: darkgray;
+    background-color: darkred;
+}
+#content .fast-access ul li {
+    padding: var(--px-16) var(--px-20);
+    margin: 0 var(--px-20) var(--px-20);
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+#content .fast-access ul li a {
+    color: darkgray ;
+}
+#content .fast-access ul li:hover {
+    background-color: rgb(139, 41, 41);
+}
+#content .fast-access ul li:hover a {
+    color: white;
+}
+
+
+#content .feature {
+    display: flex;
+    justify-content: space-between;
+}
+#content .feature .card {
+    flex: 1 1 250px;
+    margin: var(--px-20) ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--px-20);
+    background: linear-gradient(0deg, #530000, #190000);
+    /* background-color: #763d23; */
+    color: azure;
+    border-radius: 5px;
+}
+#content .feature .card h3 {
+    margin: var(--px-14) 0;
+}
+#content .feature .card p {
+    color: darkgray;
+    text-align: center;
+}
+#content .feature img {
+    width: var(--px-100);
+}
+
+.footer {
+    bottom: 0;
+    background-color: #150d0c;
+    width: 100%;
+    padding: var(--px-14);
+    /* margin-bottom: 30px; */
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+.footer h4 {
+    width: max-content;
+    background: linear-gradient(30deg, red,black, white, black, blue, aqua, sandybrown , black, white, black, red, rgb(0, 212, 39), blue);
+    background-clip: text;
+    color: transparent;
+    background-size: 400%;
+    letter-spacing: 1px;
+    animation: animate-text 5s linear infinite;
+}
+@keyframes animate-text {
+    0% {
+        background-position: 200%;
+    }
+    10% {
+        background-position: 150%;
+    }
+    30% {
+        background-position: 90%;
+    }
+    31% {background-position: 110%;}
+    40% {background-position: 200%;}
+    51% {background-position: 180%;}
+    55% {background-position: 200%;}
+    100% {
+        background-position: 0%;
+    }
+}

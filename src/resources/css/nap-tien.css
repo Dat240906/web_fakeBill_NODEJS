@@ -1,0 +1,169 @@
+.bank {
+    color:white
+}
+
+.pd-20px {
+    padding: var(--px-20);
+}
+#content .main {
+    margin-bottom: var(--px-60);
+    font-size: 13px;
+}
+#content .main .bank {
+    /* width: 60%; */
+    flex: 1 1 200px;
+}
+#content .main h1 {
+    margin-bottom: var(--px-20);
+}
+#content .main .note {
+    /* width: 40%; */
+    flex: 1 1 200px;
+}
+#content .main .bank .container .item h3{
+    color: #b0b0b0;
+}
+#content .main .bank .container .item:has(input:checked) h3 {
+    color: white;
+}
+#content .main .bank .container .item:has(input:checked) {
+    background-color: #943636;
+}
+
+
+#content .main .bank .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--px-20);
+    margin-bottom: var(--px-20);
+}
+
+#content .main .bank .container .item {
+    flex: 1 1 200px;
+    padding: var(--px-16);
+    border: 1px solid transparent;
+    border-image: linear-gradient(180deg, black, red ) 1;
+}
+#content .main .bank .container .item:hover {
+    transform: scale(1.05)
+}
+#content .main .info .qr-code {
+}
+
+
+@property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+#content .main .info {
+    /* margin: var(--px-20); */
+}
+#content .main .info .qr-code img {
+    position: relative;
+}
+#content .main .info .qr-code::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: repeating-conic-gradient(from var(--angle), transparent 25%, red 50%);
+    animation: spin 5s linear infinite;;
+    padding: 5px;
+    inset: -5px;
+}
+
+@keyframes spin {
+    from {
+        --angle:0deg
+    }
+    to {
+        --angle:360deg
+    }
+}
+#content .main .info-author {
+    padding-right: 0;
+    flex: 1 1 200px;
+}
+#content .main .info-author label {
+    margin-bottom: var(--px-16);
+}
+#content .main .info-author .row-wrap {
+    gap: 10px;
+    margin-bottom: var(--px-20);
+}
+
+#content .main .info-author button {
+    padding: 8px 16px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid aqua;
+    color: aqua;
+    font-size: var(--px-20);
+    margin: var(--px-16) 0;
+}
+#content .main .info-author button:hover {
+    background-color: aqua;
+    color: black;
+}
+@property --kai {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.border-adnimation {
+    border: 1px solid transparent;
+    border-image: linear-gradient(var(--kai, 0deg), black, red);
+    border-image-slice: 1;
+    animation: kai 4s linear infinite;
+}
+
+@keyframes kai {
+    0% { --kai: 0deg; }
+    100% { --kai: 360deg; }
+}
+
+
+#content .note {
+    color: white;
+    height: 600px;
+
+}
+
+details {
+    color: #b0b0b0;
+    padding: var(--px-16);
+    border: 1px solid transparent;
+    border-image: linear-gradient(180deg, black, red) 1;
+}
+details .details__summary {
+    cursor: pointer;
+    font-size: var(--px-18);
+}
+details .details__content {
+    margin: var(--px-20);
+}
+
+details .details__content p {
+    margin: 10px 0;
+}
+
+details[open] .details__summary,
+details[open] .details__content {
+    color: white;
+}
+
+
+details .details__content {
+    max-height: 0;
+    transition: max-height 2s ease-in-out;
+    overflow: hidden;
+    display: block;
+}
+
+details[open] .details__content {
+    max-height: 200px; 
+}

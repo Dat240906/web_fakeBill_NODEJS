@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FAKEBILL - Xác thực</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="../resources/css/base.css">
+    <link rel="stylesheet" href="../resources/css/login.css">
+    <link rel="stylesheet" href="../resources/css/reponsive.css">
+</head>
+<body>
+    <main  class="row">
+        <section id="banner">
+            <div class="container-logo" data-text="F A K E B I L L" copyright="© FakeBill Team 🖤">
+                <span>F</span>
+                <span>A</span>
+                <span>K</span>
+                <span>E</span>
+                <span>B</span>
+                <span>I</span>
+                <span>L</span>
+                <span>L</span>
+            </div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </section>
+
+        <section id="form-container">
+            <h1 style="letter-spacing: 2px;">CHÀO MỪNG ĐẾN VỚI FAKEBILL !!!</h1>
+            <div class="noti">
+                <p class="main-noti">Vui lòng đăng nhập để có thể sử dụng dịch vụ</p>
+                <span class="close-noti material-symbols-outlined">
+                    close
+                    </span>
+            </div>
+            <form class="form-login mg-t-b-30">
+                <div class="label-input">
+                    <input type="text" id="login-username" required placeholder=" " autocomplete="off">
+                    <label for="login-username">Email or Tên đăng nhập</label>
+                </div>
+                <div class="label-input">
+                    <input type="password" id="login-password" required placeholder=" ">
+                    <label for="login-password">Mật khẩu</label>
+                </div>
+                <div class="container-button">
+                    <button type="submit">Đăng nhập</button>
+                </div>
+                <div class="container-noti">
+                    <a href="#" onclick="direct_register_form(event)">Chưa có tài khoản? Đăng ký ngay</a>
+                </div>
+            </form>
+
+            <form class="form-register mg-t-b-30 none">
+                <div class="label-input">
+                    <input type="text" id="register-username" required placeholder=" " autocomplete="off">
+                    <label for="register-username">Tên đăng nhập</label>
+                </div>
+                <div class="label-input">
+                    <input type="email" id="register-email" required placeholder=" " autocomplete="off">
+                    <label for="register-email">Email</label>
+                </div>
+                <div class="label-input">
+                    <input type="password" id="register-password" required placeholder=" ">
+                    <label for="register-password">Mật khẩu</label>
+                </div>
+                <div class="label-input">
+                    <input type="password" id="register-repassword" required placeholder=" ">
+                    <label for="register-repassword">Xác nhận mật khẩu</label>
+                </div>
+                <div class="container-button">
+                    <button type="submit">Đăng Ký</button>
+                </div>
+                <div class="container-noti">
+                    <a href="#" onclick="direct_login_form(event)">Đã có tài khoản? Đăng nhập ngay</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Hàm gọi API
+        const callAPI = async (endpoint, method = 'POST', data = null) => {
+            // Lấy URL của host hiện tại
+            const baseURL = window.location.origin;
+
+            const url = `${baseURL}${endpoint}`;
+
+            const options = {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            };
+
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(url, options);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
+                }
+
+                return await response.json();
+            } catch (error) {
+                console.error('API call failed:', error);
+                throw error;
+            }
+        };
+
+        // Xử lý đăng nhập
+        document.querySelector('.form-login').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const noti = document.querySelector('.main-noti')
+                const containNoti = noti.closest('div.noti') 
+                containNoti.classList.add('none')
+                const result = await callAPI('/user/login', 'POST', { username, password });
+                containNoti.classList.add('block')
+                containNoti.classList.remove('none')
+                noti.textContent = result.message
+                if (result.success) {
+                    containNoti.classList.remove('style-error')
+                    containNoti.classList.add('style-success')
+                    setInterval(() => {
+                        window.location.href = result.redirect
+                    }, 1000)
+                    return 
+                }
+                containNoti.classList.remove('style-success')
+                containNoti.classList.add('style-error')
+            } catch (error) {
+                console.error('Lỗi đăng nhập:', error);
+                // Xử lý lỗi đăng nhập
+            }
+        });
+
+        // Xử lý đăng ký
+        document.querySelector('.form-register').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('register-username').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const repassword = document.getElementById('register-repassword').value;
+
+            if (password !== repassword) {
+                alert('Mật khẩu không khớp!');
+                return;
+            }
+
+            try {
+                const result = await callAPI('/user/register', 'POST', { username, email, password });
+                console.log('Đăng ký thành công:', result);
+                // Xử lý thành công đăng ký
+            } catch (error) {
+                console.error('Đăng ký thất bại:', error);
+                // Xử lý lỗi đăng ký
+            }
+        });
+
+        function direct_login_form(e) {
+            e.preventDefault();
+            document.querySelector('.form-register').classList.add('none');
+            document.querySelector('.form-login').classList.remove('none');
+        }
+
+        function direct_register_form(e) {
+            e.preventDefault();
+            document.querySelector('.form-login').classList.add('none');
+            document.querySelector('.form-register').classList.remove('none');
+        }
+
+        document.querySelector('.close-noti').addEventListener('click', ()=> {
+            document.querySelector('.noti').classList.add('none');
+        })
+    </script>
+</body>
+</html>

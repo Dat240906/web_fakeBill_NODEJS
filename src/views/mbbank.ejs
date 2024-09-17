@@ -274,7 +274,9 @@
                             <canvas id="container-canvas" width="500" height="300"></canvas>
                         </div>
                         <div class="container-button ">
-                            <a onclick="resetBill()" class="flex-1 reset-bill center-y center-x fix-a" download ><span class="material-symbols-outlined">restart_alt</span>Đặt lại</a>
+                            <a onclick="resetALL()" class="flex-1 reset-bill center-y center-x fix-a" download>
+    <span class="material-symbols-outlined">restart_alt</span>Đặt lại
+</a>
                             <a class="flex-1 download-bill center-y center-x fix-a" download ><span class="material-symbols-outlined">download</span>Tạo ngay</a>
                         </div>
                     </div>
@@ -325,6 +327,9 @@
             const [r, g, b] = color;
             ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${fontOpacity})`;
 
+            // Define the vertical spacing between lines
+            const posY = 38;  // Fixed vertical spacing between lines
+
             // Helper function to draw text with alignment and return line width
             function drawTextLine(line, x, y) {
                 const lineWidth = ctx.measureText(line).width;
@@ -364,7 +369,7 @@
                     }
 
                     line = words[i] + ' ';
-                    lineHeightOffset += fontSize;  // Assuming lineHeight equals fontSize
+                    lineHeightOffset += posY;  // Use posY for line height
                 } else {
                     line = testLine;
                 }
@@ -383,11 +388,12 @@
             }
 
             // Calculate the bottom Y coordinate
-            bottomY = y + lineHeightOffset + fontSize; // Include additional height for the final line
+            bottomY = y + lineHeightOffset + posY; // Include additional height for the final line
 
             // Return both the leftmost x position and the bottom Y coordinate
             return { widthText, bottomY };
         }
+
 
         async function printSubDetails(ctx, percent, timeDevide) {
             // pin, sóng, wifi, giờ
@@ -565,7 +571,7 @@
                 },
                 "name": {
                     "x": 300,
-                    "max_x": 450,
+                    "max_x": 480,
                     "y": 546,
                     "font_family": "mb",
                     "font_size": 25,
@@ -621,7 +627,7 @@
                     await printImage(ctx, 
                         pathIconSmallBank,
                         dataObject.x+widthNameBank-58,
-                        posYName-21,
+                        posYName-36,
                         dataObject.w,
                         dataObject.h
                         )
@@ -633,7 +639,7 @@
                     const {widthText, bottomY} = printText(ctx, {
                     x: dataObject.x,
                     maxX: dataObject.max_x,
-                    y: posYName+16,
+                    y: posYName,
                     fontFamily: dataObject.font_family,
                     fontSize: dataObject.font_size,
                     fontWeight: dataObject.font_weight,
@@ -651,7 +657,7 @@
                     const {widthText, bottomY} = printText(ctx, {
                     x: dataObject.x,
                     maxX: dataObject.max_x,
-                    y: posYNameBank+22,
+                    y: posYNameBank,
                     fontFamily: dataObject.font_family,
                     fontSize: dataObject.font_size,
                     fontWeight: dataObject.font_weight,
@@ -689,7 +695,7 @@
             await printImage(ctx, 
                 '../resources/phoi/chuyen_khoan/mb/duoi.png',
                 0,
-                posYMessage-10,
+                posYMessage-32,
                 591,
                 445
             )
@@ -886,7 +892,49 @@
         });
 
         </script>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // Hàm cập nhật thời gian hiện tại vào các thẻ input
+    function updateCurrentTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+
+        const datetimeInput = document.getElementById('data-input-time');
+        datetimeInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        
+        const hourInput = document.getElementById('data-input-hour');
+        hourInput.value = `${hours} ${minutes}`;
+    }
+
+    // Hàm reset tất cả các trường input ngoại trừ thời gian
+    window.resetALL = function() {
+        const amountInput = document.getElementById('data-input-amount');
+        const nameInput = document.getElementById('data-input-name-reciever');
+        const stkInput = document.getElementById('data-input-stk-reciever');
+        const bankInput = document.getElementById('data-input-bank-reciever');
+        const messageInput = document.getElementById('data-input-message');
+        const batteryInput = document.getElementById('data-input-battery');
+
+        // Reset các trường nhập liệu
+        amountInput.value = '';
+        nameInput.value = '';
+        stkInput.value = '';
+        bankInput.value = '';
+        messageInput.value = '';
+        batteryInput.value = '';
+
+        // Cập nhật thời gian hiện tại
+        updateCurrentTime();
+    }
+
+    // Cập nhật thời gian ngay khi trang được tải
+    updateCurrentTime();
+});
+        </script>
     
 </body>
 </html>
